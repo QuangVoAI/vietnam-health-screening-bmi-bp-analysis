@@ -1,0 +1,11 @@
+# Never commit individual-level health data or source exports
+Research_Data.csv
+*.xlsx
+*.xls
+raw/
+data/
+
+# Notebook runtime files
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
