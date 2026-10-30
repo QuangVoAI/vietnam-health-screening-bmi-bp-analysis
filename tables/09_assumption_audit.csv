@@ -1,0 +1,4 @@
+﻿So sánh,Levene statistic,p-value,Diễn giải
+HATT theo nhóm BMI,4.636367400995417,0.0009745230453998342,Dùng Welch ANOVA và hậu kiểm Welch–Holm
+HATT theo nhóm tuổi,62.36175160321107,8.562900294351756e-40,Dùng Welch ANOVA và hậu kiểm Welch–Holm
+BMI × cờ sàng lọc,,,Ô kỳ vọng nhỏ nhất = 83.03; không có ô <5

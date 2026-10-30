@@ -1,38 +1,53 @@
-# Vietnam Community Health Screening: BMI–Blood Pressure Analysis
+# Vietnam Community Health Screening: BMI and Blood Pressure Analysis
 
-Reproducible statistical analysis for the cross-sectional association between body mass index (BMI) and systolic blood pressure among de-identified health-screening encounters from adults aged 18–59 years in 2026.
+Reproducible statistical analysis of the cross-sectional association between body mass index (BMI) and systolic blood pressure (SBP) in de-identified community periodic health-screening encounters among adults aged 18–59 years in 2026.
 
-## Repository contents
+## Research question and interpretation boundary
 
-- `M3_BMI_HuyetAp_Final_Analysis.ipynb`: executed analysis notebook.
-- `build_m3_final_notebook.py`: reproducibly builds the notebook.
-- `figures/`: 12 publication-ready figures (17 visual panels).
-- `tables/`: aggregate results only: descriptive statistics, quality audit, hypothesis tests, regression, and sensitivity analysis.
-- `requirements.txt`: Python dependencies.
-
-## Data access
-
-Individual-level records are **not included** in this repository. The notebook expects the de-identified CSV at the local path configured in the notebook. Dataset access is managed separately through the gated Hugging Face repository:
-
-<https://huggingface.co/datasets/SpringWang08/vietnam-community-health-screening-bmi-blood-pressure-2026>
-
-## Analysis scope
-
-The analysis includes data-quality checks, exploratory visualizations, Welch t-test, one-way ANOVA, Chi-square, Pearson/Spearman correlation, multivariable ordinary least squares regression, diagnostics, and sensitivity analysis for repeated-source-record flags.
+**Research question:** In the cleaned analytical cohort, is BMI associated with SBP after accounting for age, sex, and pulse?
 
 The primary model is:
 
-`Systolic blood pressure ~ BMI + age + sex + pulse`
+`SBP ~ BMI + age + sex + pulse`
 
-## Interpretation boundary
+This is an encounter-level cross-sectional analysis. Results describe statistical associations in this analytical cohort only; they do **not** establish causality, provide a clinical diagnosis or treatment recommendation, or claim national representativeness.
 
-This is a cross-sectional health-screening analysis. Results describe statistical associations in the released analytical cohort only. They do not establish causality, clinical diagnosis, treatment recommendations, or national representativeness.
+## Release contents
 
-## Privacy
+- `M3_BMI_HuyetAp_Final_Analysis.ipynb`: executed notebook with a portable input-data path and local paths removed from displayed output.
+- `build_m3_final_notebook.py`: reproducibly builds the analysis notebook.
+- `figures/`: 13 question-driven PNG figures, including distribution, diagnostic, subgroup, regression, and sensitivity views.
+- `tables/`: 12 aggregate-only CSV tables. They cover data quality, distributions, assumption checks, hypothesis tests, Welch–Holm post-hoc comparisons, correlation, adjusted regression, and sensitivity analysis.
+- `reports/`: Vietnamese rubric report and English research-paper-style report, in DOCX and PDF.
+- `scripts/`: notebook-presentation and report-build scripts, plus the notebook public-release sanitizer.
+- `requirements.txt`: Python dependencies for reproducing the notebook.
 
-No source workbook, direct identifiers, or individual-level CSV file is included here. Aggregate tables and figures remain subject to the project’s data-governance conditions.
+## Reproduce safely
 
-## Related literature
+Individual-level data are intentionally absent. After access is granted to the de-identified CSV, either place it at `data/Research_Data.csv` or set `M3_DATA_PATH` to its local file path. Never use the identified source workbook.
+
+```bash
+python -m pip install -r requirements.txt
+export M3_DATA_PATH="/secure/location/Research_Data.csv"
+jupyter nbconvert --to notebook --execute --inplace M3_BMI_HuyetAp_Final_Analysis.ipynb \
+  --ExecutePreprocessor.timeout=300
+```
+
+The de-identified dataset is governed separately through the gated Hugging Face repository: <https://huggingface.co/datasets/SpringWang08/vietnam-community-health-screening-bmi-blood-pressure-2026>.
+
+## Data governance
+
+No source workbook, direct identifiers, individual-level CSV, or record-level export is committed to this repository. Published figures and CSV tables are aggregate analytical outputs only. Access to the de-identified microdata remains subject to the dataset's gated-access conditions.
+
+## Analytical highlights
+
+- Data-quality flow, missingness/duplicate checks, and IQR outlier audit.
+- Distribution diagnostics for BMI and SBP: histogram/KDE, Q–Q plot, skewness, kurtosis, and normality checks.
+- Welch t-test, classical one-way ANOVA, Welch ANOVA with Holm-corrected pairwise Welch tests, and chi-square with expected-count audit.
+- Pearson/Spearman correlation and an adjusted OLS model with VIF and residual diagnostics.
+- Repeated-source-record-flag sensitivity analysis.
+
+## Context literature
 
 - Nguyen Minh Q, Nguyen Vo M. *Anthropometric Indexes for Predicting High Blood Pressure in Vietnamese Adults: A Cross-Sectional Study.* Integr Blood Press Control. 2020;13:181–186. doi:10.2147/IBPC.S281996.
 - Wang J, et al. *The importance of waist circumference and body mass index in cross-sectional relationships with risk of cardiovascular disease in Vietnam.* PLoS One. 2018. PMID:29813112.
