@@ -1,0 +1,15 @@
+﻿Biến,Kiểu dữ liệu,Số thiếu,Số giá trị khác nhau
+Mã nghiên cứu,str,0,7146
+Tháng khám,str,0,5
+Tuổi (năm),int64,0,42
+Nhóm tuổi,str,0,4
+Giới tính,str,0,2
+Chiều cao (cm),float64,0,71
+Cân nặng (kg),float64,0,102
+BMI (kg/m²),float64,0,1166
+Nhóm BMI phân tích,str,0,5
+Mạch (lần/phút),int64,0,91
+Huyết áp tâm thu (mmHg),int64,0,111
+Huyết áp tâm trương (mmHg),int64,0,81
+Cờ sàng lọc HA ≥140/90,int64,0,2
+Cờ mã nguồn lặp,int64,0,2

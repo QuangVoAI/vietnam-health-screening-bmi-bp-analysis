@@ -16,10 +16,10 @@ This is an encounter-level cross-sectional analysis. Results describe statistica
 
 - `M3_BMI_HuyetAp_Final_Analysis.ipynb`: executed notebook with a portable input-data path and local paths removed from displayed output.
 - `build_m3_final_notebook.py`: reproducibly builds the analysis notebook.
-- `figures/`: 13 question-driven PNG figures, including distribution, diagnostic, subgroup, regression, and sensitivity views.
-- `tables/`: 12 aggregate-only CSV tables. They cover data quality, distributions, assumption checks, hypothesis tests, Welch–Holm post-hoc comparisons, correlation, adjusted regression, and sensitivity analysis.
+- `figures/`: 17 question-driven PNG figures, including distribution, diagnostic, subgroup, regression, sensitivity, and cross-validation views.
+- `tables/`: 24 aggregate-only result tables. They cover data quality, distributions, assumptions, robust tests, correlation, adjusted regression, model comparison, cross-validation, and sensitivity analysis.
 - `reports/`: Vietnamese rubric report and English research-paper-style report, in DOCX and PDF.
-- `scripts/`: notebook-presentation and report-build scripts, plus the notebook public-release sanitizer.
+- `scripts/`: notebook-presentation, advanced-validation, report-build, and public-release-sanitizer scripts.
 - `requirements.txt`: Python dependencies for reproducing the notebook.
 
 ## Reproduce safely
@@ -45,7 +45,8 @@ No source workbook, direct identifiers, individual-level CSV, or record-level ex
 - Distribution diagnostics for BMI and SBP: histogram/KDE, Q–Q plot, skewness, kurtosis, and normality checks.
 - Welch t-test, classical one-way ANOVA, Welch ANOVA with Holm-corrected pairwise Welch tests, and chi-square with expected-count audit.
 - Pearson/Spearman correlation and an adjusted OLS model with VIF and residual diagnostics.
-- Repeated-source-record-flag sensitivity analysis.
+- HC3 robust confidence intervals, Breusch–Pagan and Cook's distance diagnostics.
+- Nested model comparison, 5-fold cross-validation, and multiple sensitivity analyses.
 
 ## Context literature
 

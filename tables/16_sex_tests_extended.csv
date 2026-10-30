@@ -1,0 +1,4 @@
+﻿Kiểm tra,Thống kê,df hoặc n,p-value,Kích thước hiệu ứng,Ghi chú
+Levene (median),0.07258355675970464,,0.7876193895968797,,Kiểm tra phương sai
+Welch t-test,26.581134983913557,7123.950736040101,1.623693817736973e-148,,Khác biệt trung bình Nam – Nữ
+Mann–Whitney U,8863306.0,12744720.0,7.773839215921219e-181,0.3908985054202838,Rank-biserial: Nam > Nữ nếu dương
